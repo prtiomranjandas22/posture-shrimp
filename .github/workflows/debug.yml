@@ -21,12 +21,12 @@ jobs:
       - name: Install Frontend
         run: npm install
       - name: Build Tauri
-        run: npm run tauri build > build_output.log 2>&1
+        run: npm run tauri build > build_output.txt 2>&1
         continue-on-error: true
       - name: Commit Log
         run: |
           git config --global user.name "Log Bot"
           git config --global user.email "bot@example.com"
-          git add build_output.log
+          git add build_output.txt
           git commit -m "Add build log"
           git push
