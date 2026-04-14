@@ -1,6 +1,6 @@
 [package]
 name = "posture-shrimp"
-version = "0.1.0"
+version = "1.0.2"
 description = "A privacy-first desktop application that tracks user posture in real-time."
 authors = ["you"]
 edition = "2021"

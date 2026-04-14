@@ -1,7 +1,7 @@
 {
   "productName": "PostureShrimp",
   "version": "0.1.0",
-  "identifier": "com.postureshrimp.app",
+  "identifier": "com.postureshrimp.desktop",
   "build": {
     "beforeDevCommand": "npm run dev",
     "beforeBuildCommand": "npm run build",
