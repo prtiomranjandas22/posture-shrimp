@@ -1,4 +1,3 @@
-import { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { CameraView } from '../camera/CameraView';
 import { useAppStore } from '../../lib/store';
