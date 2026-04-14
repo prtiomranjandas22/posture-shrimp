@@ -1,0 +1,27 @@
+name: Debug Build Pipeline
+
+on:
+  push:
+    branches: [ debug ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Setup Rust
+        uses: dtolnay/rust-toolchain@stable
+      - name: Install Frontend
+        run: npm install
+      - name: Build Tauri
+        run: npm run tauri build > output.log 2>&1
+        continue-on-error: true
+      - name: Upload Logs
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-build-log
+          path: output.log
