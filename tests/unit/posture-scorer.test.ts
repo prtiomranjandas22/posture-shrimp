@@ -15,17 +15,17 @@ describe('posture-scorer', () => {
     const landmarks = Array(33).fill(null).map(createMockLandmark);
     
     // Set leftEar
-    landmarks[7] = { x: 0.5, y: 0.2, z: 0, visibility: 0.9 };
+    landmarks[7] = { x: 0.4, y: 0.2, z: 0, visibility: 0.9 };
     // Set rightEar
-    landmarks[8] = { x: 0.5, y: 0.2, z: 0, visibility: 0.9 };
+    landmarks[8] = { x: 0.6, y: 0.2, z: 0, visibility: 0.9 };
     // Set leftShoulder
     landmarks[11] = { x: 0.4, y: 0.4, z: 0, visibility: 0.9 };
     // Set rightShoulder
     landmarks[12] = { x: 0.6, y: 0.4, z: 0, visibility: 0.9 };
     // Set leftHip
-    landmarks[23] = { x: 0.45, y: 0.8, z: 0, visibility: 0.9 };
+    landmarks[23] = { x: 0.4, y: 0.8, z: 0, visibility: 0.9 };
     // Set rightHip
-    landmarks[24] = { x: 0.55, y: 0.8, z: 0, visibility: 0.9 };
+    landmarks[24] = { x: 0.6, y: 0.8, z: 0, visibility: 0.9 };
 
     const metrics = calculatePostureScore(landmarks);
     

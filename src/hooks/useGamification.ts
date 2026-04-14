@@ -30,13 +30,17 @@ export function useGamification(score: number | undefined) {
        // 3s @ 10fps = 30 frames
        if (badFramesRef.current >= 30 && !isAlertingRef.current) {
           isAlertingRef.current = true;
-          invoke('send_slouch_alert', { 
-            title: "Slouch Detected!", 
-            message: "Your posture score dropped below threshold. Sit up!" 
-          }).finally(() => {
-            // cooldown before next alert
+          if (typeof window !== 'undefined' && (window as any).__TAURI__) {
+            invoke('send_slouch_alert', { 
+              title: "Slouch Detected!", 
+              message: "Your posture score dropped below threshold. Sit up!" 
+            }).finally(() => {
+              setTimeout(() => { isAlertingRef.current = false; badFramesRef.current = 0; }, 5000);
+            });
+          } else {
+            console.log("Posture Alert: Slouching detected!");
             setTimeout(() => { isAlertingRef.current = false; badFramesRef.current = 0; }, 5000);
-          });
+          }
        }
     } else {
        badFramesRef.current = Math.max(0, badFramesRef.current - 1);

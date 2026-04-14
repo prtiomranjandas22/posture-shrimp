@@ -17,7 +17,7 @@ jobs:
       - id: create_release
         uses: softprops/action-gh-release@v1
         with:
-          draft: true
+          draft: false
 
   build:
     needs: draft_release
