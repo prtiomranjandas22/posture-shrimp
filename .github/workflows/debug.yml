@@ -4,6 +4,9 @@ on:
   push:
     branches: [ debug ]
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: windows-latest
@@ -18,10 +21,12 @@ jobs:
       - name: Install Frontend
         run: npm install
       - name: Build Tauri
-        run: npm run tauri build > output.log 2>&1
+        run: npm run tauri build > build_output.log 2>&1
         continue-on-error: true
-      - name: Upload Logs
-        uses: actions/upload-artifact@v4
-        with:
-          name: windows-build-log
-          path: output.log
+      - name: Commit Log
+        run: |
+          git config --global user.name "Log Bot"
+          git config --global user.email "bot@example.com"
+          git add build_output.log
+          git commit -m "Add build log"
+          git push
